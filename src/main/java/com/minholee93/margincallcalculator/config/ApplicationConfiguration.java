@@ -23,6 +23,7 @@ public class ApplicationConfiguration {
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         return jackson2ObjectMapperBuilder
+                .simpleDateFormat("yyyy-MM-dd HH:mm:ss")
                 .serializers(new LocalDateTimeSerializer(defaultDateTimeFormatter))
                 .deserializers(new LocalDateTimeDeserializer(defaultDateTimeFormatter))
                 .build();
