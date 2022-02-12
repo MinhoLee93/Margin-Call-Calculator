@@ -20,9 +20,24 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.google.code.gson:gson:2.8.8'
+    implementation 'com.fasterxml.jackson.module:jackson-module-afterburner:2.11.1'
+
+    implementation 'org.springframework.boot:spring-boot-configuration-processor:2.3.1.RELEASE'
+    implementation 'org.apache.commons:commons-pool2:2.8.0'
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'org.apache.commons:commons-text:1.9'
+
     compileOnly 'org.projectlombok:lombok'
+
+    implementation "ch.qos.logback:logback-classic:1.2.10"
+    implementation "ch.qos.logback:logback-core:1.2.10"
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
     annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.3.1.RELEASE'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
