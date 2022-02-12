@@ -1,4 +1,4 @@
-package com.minholee93.margincallcalculator.rest.response;
+package com.minholee93.margincallcalculator.rest.response.common;
 
 import lombok.Getter;
 import lombok.ToString;
