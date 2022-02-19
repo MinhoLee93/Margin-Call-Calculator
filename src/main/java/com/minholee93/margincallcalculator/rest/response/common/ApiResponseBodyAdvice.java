@@ -1,5 +1,7 @@
 package com.minholee93.margincallcalculator.rest.response.common;
 
+import com.minholee93.margincallcalculator.rest.response.common.code.HttpResponseCode;
+import com.minholee93.margincallcalculator.rest.response.common.code.HttpSuccessResponseCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -37,13 +39,13 @@ public class ApiResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                                   @NonNull ServerHttpResponse response) {
 
         Object responseData = null;
-        HttpResponseCode httpResponseCode = SuccessHttpResponseCode.OK;
+        HttpResponseCode httpResponseCode = HttpSuccessResponseCode.OK;
 
         if (Void.TYPE.equals(returnType.getParameterType())) {
             responseData = DUMMY;
         } else {
             if (ObjectUtils.isEmpty(body)) {
-                httpResponseCode = SuccessHttpResponseCode.NO_CONTENT;
+                httpResponseCode = HttpSuccessResponseCode.NO_CONTENT;
             } else  {
                 responseData = body;
             }

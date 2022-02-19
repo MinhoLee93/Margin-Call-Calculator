@@ -18,6 +18,7 @@ public class ApiResponse<T> {
         this.code = code;
         this.message = message;
         this.data = data;
+        // NOTE : TransactionIdInterceptor 에서 생성함.
         this.transactionId = MDC.get("transactionId");
     }
 

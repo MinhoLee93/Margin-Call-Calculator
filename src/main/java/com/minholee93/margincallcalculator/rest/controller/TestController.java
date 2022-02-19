@@ -7,24 +7,30 @@ import lombok.Getter;
 import lombok.ToString;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
+@Validated
 @RestController
 public class TestController {
 
     @GetMapping("/test")
-    public TestVo getTest() {
+    public TestResponseVo getTest() {
 
         LocalDateTime now = LocalDateTime.now();
-        return TestVo.of(now, now);
+        return TestResponseVo.of(now, now);
     }
 
     @GetMapping("/tests")
-    public ApiPageResponse<TestVo> getTestPage(@PageableDefault(size = 50) Pageable pageable) {
+    public ApiPageResponse<TestResponseVo> getTestPage(@PageableDefault(size = 50) Pageable pageable,
+                                                       @Valid @RequestBody TestRequestVo requestVo) {
 
         LocalDateTime now = LocalDateTime.now();
 
@@ -32,19 +38,27 @@ public class TestController {
                 pageable.getPageNumber(),
                 1,
                 YnType.Y,
-                Collections.singletonList(TestVo.of(now, now))
+                Collections.singletonList(TestResponseVo.of(now, now))
         );
     }
 
     @ToString
     @Getter
     @AllArgsConstructor
-    public static class TestVo {
+    public static class TestResponseVo {
         private LocalDateTime createDateTime;
         private LocalDateTime updateDateTime;
 
-        public static TestVo of(LocalDateTime createDateTime, LocalDateTime updateDateTime) {
-            return new TestVo(createDateTime, updateDateTime);
+        public static TestResponseVo of(LocalDateTime createDateTime, LocalDateTime updateDateTime) {
+            return new TestResponseVo(createDateTime, updateDateTime);
         }
+    }
+
+    @Getter
+    @ToString
+    public static class TestRequestVo {
+
+        @NotNull
+        private String test;
     }
 }

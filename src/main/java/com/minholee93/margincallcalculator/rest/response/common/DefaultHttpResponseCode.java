@@ -1,5 +1,6 @@
 package com.minholee93.margincallcalculator.rest.response.common;
 
+import com.minholee93.margincallcalculator.rest.response.common.code.HttpResponseCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.springframework.http.HttpStatus;

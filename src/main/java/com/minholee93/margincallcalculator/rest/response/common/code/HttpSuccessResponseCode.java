@@ -1,8 +1,8 @@
-package com.minholee93.margincallcalculator.rest.response.common;
+package com.minholee93.margincallcalculator.rest.response.common.code;
 
 import org.springframework.http.HttpStatus;
 
-public enum SuccessHttpResponseCode implements HttpResponseCode {
+public enum HttpSuccessResponseCode implements HttpResponseCode {
     OK {
         @Override
         public HttpStatus getHttpStatus() {
